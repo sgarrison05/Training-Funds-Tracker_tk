@@ -23,7 +23,7 @@ window.style = Style(theme = "darkly")
 
 
 # Input Framework ================================================
-txb_Date = tk.Entry(window, bg="#FFFFFF")
+txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
 
 reasons = ["Enter No.", "ATM", "Debit", "Dep", "Wthdrw", "Trxns"]
@@ -31,15 +31,15 @@ cmb_Type = Combobox(window, values = reasons, width=15)
 cmb_Type.current(0)
 cmb_Type.place(x=25, y=167)
 
-txb_Pay = tk.Entry(window, bg="#FFFFFF")
+txb_Pay = tk.Entry(window)
 txb_Pay.place(x=157,y=167, width=300, height=30)
-txb_Debit = tk.Entry(window, bg="#FFFFFF")
+txb_Debit = tk.Entry(window) 
 txb_Debit.place(x=479,y=167, width=74, height=30)
-txb_Credit = tk.Entry(window, bg="#FFFFFF")
+txb_Credit = tk.Entry(window)
 txb_Credit.place(x=567,y=167, width=74, height=30)
 
 # Output Framework ===============================================
-lbl_Cur_ProjID = tk.Label(window, text="Current Project:")
+lbl_Cur_ProjID = tk.Label(window, text="Current Training:")
 lbl_Cur_ProjID.place(x=25, y=33)
 lbl_Cur_Proj = tk.Label(window, relief="solid")
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
@@ -81,6 +81,7 @@ lbl_Operator.place(x=647, y=166)
 lbl_PreviewID = tk.Label(window, text="Preview of Current Transaction:")
 lbl_PreviewID.place(x=25, y=251)
 
+# Bank Process of Transaction -------------------------------------
 Bank_Label = tk.Label(window, borderwidth=2, relief="solid")
 Bank_Label.place(x=703,y=128, width=100, height=30)
 
@@ -93,6 +94,7 @@ lbl_Line.place(x=703, y=198, width=100, height=15)
 Results_Label = tk.Label(window, borderwidth=2, relief="solid")
 Results_Label.place(x=703,y=225, width=100, height=30)
 
+# Preview Transaction --------------------------------------------
 Prev_Label = tk.Label(window, borderwidth=2, relief="solid")          
 Prev_Label.place(x=25,y=274, width=791, height=113 )
 
