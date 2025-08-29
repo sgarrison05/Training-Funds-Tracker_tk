@@ -17,6 +17,20 @@ window.title("Training Funds Tracker")
 window.style = Style(theme = "darkly")
 
 # Defined Functions
+def Preview_Calculations():
+    pass
+
+def Apply_Calculations():
+    pass
+
+def Ready_Form():
+    pass
+
+def Reconcile():
+    pass
+
+def Separation():
+    pass
 
 
 # Main Window Framework ==========================================
