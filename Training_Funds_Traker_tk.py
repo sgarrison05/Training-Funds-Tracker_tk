@@ -75,20 +75,26 @@ lbl_CreditID = tk.Label(window, text="Credit(+):")
 lbl_CreditID.place(x=564, y=144)
 lbl_BankID = tk.Label(window, text="Bank:")
 lbl_BankID.place(x=701, y=101)
-lbl_Line = tk.Label(window, text="________", font="Calibri, 16")
-lbl_Line.place(x=703, y=175)
+
 lbl_Operator = tk.Label(window, text="(+/-)", font="Calibri, 16")
 lbl_Operator.place(x=647, y=166)
 lbl_PreviewID = tk.Label(window, text="Preview of Current Transaction:")
 lbl_PreviewID.place(x=25, y=251)
+
+Bank_Label = tk.Label(window, borderwidth=2, relief="solid")
+Bank_Label.place(x=703,y=128, width=100, height=30)
+
+Trans_Label = tk.Label(window, borderwidth=2, relief="solid")
+Trans_Label.place(x=703,y=167, width=100, height=30)
+
+lbl_Line = tk.Label(window, text="___________________")
+lbl_Line.place(x=703, y=198, width=100, height=15)
+
+Results_Label = tk.Label(window, borderwidth=2, relief="solid")
+Results_Label.place(x=703,y=225, width=100, height=30)
+
 Prev_Label = tk.Label(window, borderwidth=2, relief="solid")          
 Prev_Label.place(x=25,y=274, width=791, height=113 )
-Bank_Label = tk.Label(window, borderwidth=2, relief="solid")
-Bank_Label.place(x=703,y=122, width=100, height=23)
-Trans_Label = tk.Label(window, borderwidth=2, relief="solid")
-Trans_Label.place(x=703,y=162, width=100, height=23)
-Results_Label = tk.Label(window, borderwidth=2, relief="solid")
-Results_Label.place(x=703,y=210, width=100, height=23)
 
 # Button Framework ===============================================
 btn_Clear = tk.Button(window, text = "Clear", command=lambda: print("Clear Button was pressed"))
