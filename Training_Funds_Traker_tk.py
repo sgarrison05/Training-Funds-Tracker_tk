@@ -38,8 +38,6 @@ txb_Debit.place(x=479,y=167, width=74, height=30)
 txb_Credit = tk.Entry(window, bg="#FFFFFF")
 txb_Credit.place(x=567,y=167, width=74, height=30)
 
-
-
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Project:")
 lbl_Cur_ProjID.place(x=25, y=33)
