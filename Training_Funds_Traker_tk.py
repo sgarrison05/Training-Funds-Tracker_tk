@@ -8,7 +8,7 @@
 import tkinter as tk
 from tkinter import *
 from ttkbootstrap import Style
-
+from tkinter.ttk import Combobox
 
 window = tk.Tk()
 window.geometry("841x516")
@@ -23,21 +23,52 @@ window.style = Style(theme = "darkly")
 
 
 # Input Framework ================================================
+txb_Date = tk.Entry(window, bg="#FFFFFF")
+txb_Date.place(x=25,y=105, width=118, height=30)
+
+reasons = ["Enter No.", "ATM", "Debit", "Dep", "Wthdrw", "Trxns"]
+cmb_Type = Combobox(window, values = reasons, width=15)
+cmb_Type.current(0)
+cmb_Type.place(x=25, y=167)
+
+txb_Pay = tk.Entry(window, bg="#FFFFFF")
+txb_Pay.place(x=157,y=167, width=300, height=30)
+txb_Debit = tk.Entry(window, bg="#FFFFFF")
+txb_Debit.place(x=479,y=167, width=74, height=30)
+txb_Credit = tk.Entry(window, bg="#FFFFFF")
+txb_Credit.place(x=567,y=167, width=74, height=30)
+
 
 
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Project:")
 lbl_Cur_ProjID.place(x=25, y=33)
+lbl_Cur_Proj = tk.Label(window, relief="solid")
+lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
+
 lbl_DateID = tk.Label(window, text="Date:")
 lbl_DateID.place(x=25, y=84)
 lbl_TypeID = tk.Label(window, text="Type/Check No:")
 lbl_TypeID.place(x=25, y=144)
+
 lbl_LocationID = tk.Label(window, text="Location:")
 lbl_LocationID.place(x=274, y=33)
+lbl_Location = tk.Label(window, relief="solid")
+lbl_Location.place(x=274, y=53, width=170, height=30)
+
 lbl_StartID = tk.Label(window, text="Start Date:")
 lbl_StartID.place(x=476, y=33)
+lbl_Start = tk.Label(window, relief="solid")
+lbl_Start.place(x=476, y=53, width=103, height=30)
+
+lbl_DirectionID = tk.Label(window, text="->")
+lbl_DirectionID.place(x=590, y=60)
+
 lbl_EndID = tk.Label(window, text="End Date:")
 lbl_EndID.place(x=617, y=33)
+lbl_EndID = tk.Label(window, relief="solid")
+lbl_EndID.place(x=617, y=53, width=103, height=30)
+
 lbl_PayID = tk.Label(window, text="Pay to the Order Of:")
 lbl_PayID.place(x=154, y=144)
 lbl_DebitID = tk.Label(window, text="Debit(-):")
