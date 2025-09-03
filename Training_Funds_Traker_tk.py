@@ -16,6 +16,7 @@ window.resizable(width=False, height=False)
 window.title("Training Funds Tracker")
 window.style = Style(theme = "darkly")
 
+
 # Defined Functions
 def Preview_Calculations():
     pass
@@ -31,6 +32,35 @@ def Reconcile():
 
 def Separation():
     pass
+
+def New_Training():   
+    
+    # Training Inforamtion Form to be passed to main form 
+    trainingID_Window = Toplevel(window)
+    trainingID_Window.title("Training Tracker Basic Info")
+    trainingID_Window.geometry("387x312")
+
+    lbl_TrainingName = tk.Label(trainingID_Window, text="Training Name:")
+    lbl_TrainingName.place(x=27,y=42)
+    lbl_TrainingLocation = tk.Label(trainingID_Window, text="Location:")
+    lbl_TrainingLocation.place(x=27,y=79)
+    lbl_TrainingStart = tk.Label(trainingID_Window, text="Start Date:")
+    lbl_TrainingStart.place(x=27,y=130)
+    lbl_TrainingEnd = tk.Label(trainingID_Window, text="End Date:")
+    lbl_TrainingEnd.place(x=27,y=171)
+
+    txt_TrainingName = tk.Entry(trainingID_Window)
+    txt_TrainingName.place(x=125,y=34, width=221,height=26)
+    txt_TrainingLoc = tk.Entry(trainingID_Window)
+    txt_TrainingLoc.place(x=125,y=74, width=199,height=26)
+    txt_TrainingStart = tk.Entry(trainingID_Window)
+    txt_TrainingStart.place(x=125,y=122, width=122,height=26)
+    txt_TrainingEnd = tk.Entry(trainingID_Window)
+    txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
+
+    btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy) 
+    btn_Done.place(x=267,y=219, width=91,height=40)  
+
 
 
 # Main Window Framework ==========================================
@@ -113,6 +143,8 @@ Prev_Label = tk.Label(window, borderwidth=2, relief="solid")
 Prev_Label.place(x=25,y=274, width=791, height=113 )
 
 # Button Framework ===============================================
+btn_Info = tk.Button(window, text="Info", command=New_Training)
+btn_Info.place(x=25,y=8, width=86,height=15)
 btn_Clear = tk.Button(window, text = "Clear", command=lambda: print("Clear Button was pressed"))
 btn_Clear.place(x=25, y=420, width=86, height=41)
 btn_Calc = tk.Button(window, text = "Calculate", command=lambda: print("Calculate Button was pressed"))
