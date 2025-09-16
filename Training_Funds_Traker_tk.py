@@ -50,9 +50,8 @@ def New_Training():
     lbl_TrainingEnd = tk.Label(trainingID_Window, text="End Date:")
     lbl_TrainingEnd.place(x=27,y=171)
     
-    txt_TrainingName = StringVar()
-    txt_TrainingEntry = tk.Entry(trainingID_Window, textvariable=txt_TrainingName)
-    txt_TrainingName.place(x=125,y=34, width=221,height=26)
+    txt_TrainingEntry = tk.Entry(trainingID_Window)
+    txt_TrainingEntry.place(x=125,y=34, width=221,height=26)
     txt_TrainingLoc = tk.Entry(trainingID_Window)
     txt_TrainingLoc.place(x=125,y=74, width=199,height=26)
     txt_TrainingStart = tk.Entry(trainingID_Window)
@@ -60,8 +59,13 @@ def New_Training():
     txt_TrainingEnd = tk.Entry(trainingID_Window)
     txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
 
-    btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy) 
-    btn_Done.place(x=267,y=219, width=91,height=40)  
+    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get()))
+    btn_Submit.place(x=27,y=250, width=91,height=40)  
+    btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy)
+    btn_Done.place(x=267,y=250, width=91,height=40) 
+
+def update_labels(value):
+    trainingName.set(value)
 
 
 
@@ -69,6 +73,7 @@ def New_Training():
 
 
 # Input Framework ================================================
+trainingName = StringVar()
 txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
 
@@ -87,7 +92,7 @@ txb_Credit.place(x=567,y=167, width=74, height=30)
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Training:")
 lbl_Cur_ProjID.place(x=25, y=33)
-lbl_Cur_Proj = tk.Label(window, relief="solid")     # put string variable here.
+lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName)     # put string variable here.
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
 lbl_DateID = tk.Label(window, text="Date:")
