@@ -38,6 +38,7 @@ def New_Training():
     # Training Inforamtion Form to be passed to main form 
     trainingID_Window = Toplevel(window)
     trainingID_Window.title("Training Tracker Basic Info")
+    trainingID_Window.resizable(width=False, height=False)
     trainingID_Window.geometry("387x312")
 
     lbl_TrainingName = tk.Label(trainingID_Window, text="Training Name:")
@@ -48,8 +49,9 @@ def New_Training():
     lbl_TrainingStart.place(x=27,y=130)
     lbl_TrainingEnd = tk.Label(trainingID_Window, text="End Date:")
     lbl_TrainingEnd.place(x=27,y=171)
-
-    txt_TrainingName = tk.Entry(trainingID_Window)
+    
+    txt_TrainingName = StringVar()
+    txt_TrainingEntry = tk.Entry(trainingID_Window, textvariable=txt_TrainingName)
     txt_TrainingName.place(x=125,y=34, width=221,height=26)
     txt_TrainingLoc = tk.Entry(trainingID_Window)
     txt_TrainingLoc.place(x=125,y=74, width=199,height=26)
@@ -85,7 +87,7 @@ txb_Credit.place(x=567,y=167, width=74, height=30)
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Training:")
 lbl_Cur_ProjID.place(x=25, y=33)
-lbl_Cur_Proj = tk.Label(window, relief="solid")
+lbl_Cur_Proj = tk.Label(window, relief="solid")     # put string variable here.
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
 lbl_DateID = tk.Label(window, text="Date:")
