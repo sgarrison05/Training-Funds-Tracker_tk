@@ -59,7 +59,10 @@ def New_Training():
     txt_TrainingEnd = tk.Entry(trainingID_Window)
     txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
 
-    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get(), txt_TrainingLoc.get(), txt_TrainingStart.get(), txt_TrainingEnd.get()))
+    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get(), 
+                                                                                          txt_TrainingLoc.get(), 
+                                                                                          txt_TrainingStart.get(), 
+                                                                                          txt_TrainingEnd.get()))
     btn_Submit.place(x=27,y=250, width=91,height=40)  
     btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy)
     btn_Done.place(x=267,y=250, width=91,height=40) 
