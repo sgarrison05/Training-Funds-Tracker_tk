@@ -59,13 +59,17 @@ def New_Training():
     txt_TrainingEnd = tk.Entry(trainingID_Window)
     txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
 
-    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get()))
+    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get(), txt_TrainingLoc.get(), txt_TrainingStart.get(), txt_TrainingEnd.get()))
     btn_Submit.place(x=27,y=250, width=91,height=40)  
     btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy)
     btn_Done.place(x=267,y=250, width=91,height=40) 
 
-def update_labels(value):
-    trainingName.set(value)
+def update_labels(nam_val, loc_val, std_val, end_val):
+    trainingName.set(nam_val)
+    trainingLoc.set(loc_val)
+    trainingStd.set(std_val)
+    trainingEnd.set(end_val)
+
 
 
 
@@ -74,6 +78,10 @@ def update_labels(value):
 
 # Input Framework ================================================
 trainingName = StringVar()
+trainingLoc = StringVar()
+trainingStd = StringVar()
+trainingEnd = StringVar()
+
 txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
 
@@ -97,12 +105,12 @@ lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
 lbl_LocationID = tk.Label(window, text="Location:")
 lbl_LocationID.place(x=274, y=33)
-lbl_Location = tk.Label(window, relief="solid")
+lbl_Location = tk.Label(window, relief="solid", textvariable=trainingLoc)
 lbl_Location.place(x=274, y=53, width=170, height=30)
 
 lbl_StartID = tk.Label(window, text="Start Date:")
 lbl_StartID.place(x=476, y=33)
-lbl_Start = tk.Label(window, relief="solid")
+lbl_Start = tk.Label(window, relief="solid", textvariable=trainingStd)
 lbl_Start.place(x=476, y=53, width=103, height=30)
 
 lbl_DirectionID = tk.Label(window, text="->")
@@ -110,7 +118,7 @@ lbl_DirectionID.place(x=590, y=60)
 
 lbl_EndID = tk.Label(window, text="End Date:")
 lbl_EndID.place(x=617, y=33)
-lbl_EndID = tk.Label(window, relief="solid")
+lbl_EndID = tk.Label(window, relief="solid", textvariable=trainingEnd)
 lbl_EndID.place(x=617, y=53, width=103, height=30)
 
 lbl_DateID = tk.Label(window, text="Date:")
