@@ -95,11 +95,6 @@ lbl_Cur_ProjID.place(x=25, y=33)
 lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName)     # put string variable here.
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
-lbl_DateID = tk.Label(window, text="Date:")
-lbl_DateID.place(x=25, y=84)
-lbl_TypeID = tk.Label(window, text="Type/Check No:")
-lbl_TypeID.place(x=25, y=144)
-
 lbl_LocationID = tk.Label(window, text="Location:")
 lbl_LocationID.place(x=274, y=33)
 lbl_Location = tk.Label(window, relief="solid")
@@ -117,6 +112,11 @@ lbl_EndID = tk.Label(window, text="End Date:")
 lbl_EndID.place(x=617, y=33)
 lbl_EndID = tk.Label(window, relief="solid")
 lbl_EndID.place(x=617, y=53, width=103, height=30)
+
+lbl_DateID = tk.Label(window, text="Date:")
+lbl_DateID.place(x=25, y=84)
+lbl_TypeID = tk.Label(window, text="Type/Check No:")
+lbl_TypeID.place(x=25, y=144)
 
 lbl_PayID = tk.Label(window, text="Pay to the Order Of:")
 lbl_PayID.place(x=154, y=144)
