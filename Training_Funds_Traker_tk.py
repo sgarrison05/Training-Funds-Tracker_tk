@@ -103,17 +103,20 @@ txb_Credit.place(x=567,y=167, width=74, height=30)
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Training:")
 lbl_Cur_ProjID.place(x=25, y=33)
-lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName)     # put string variable here.
+lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName)
+lbl_Cur_Proj.config(font="Calibri, 12", fg="#66B2FF")  
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
 lbl_LocationID = tk.Label(window, text="Location:")
 lbl_LocationID.place(x=274, y=33)
 lbl_Location = tk.Label(window, relief="solid", textvariable=trainingLoc)
+lbl_Location.config(font="Calibri, 12", fg="#66B2FF")
 lbl_Location.place(x=274, y=53, width=170, height=30)
 
 lbl_StartID = tk.Label(window, text="Start Date:")
 lbl_StartID.place(x=476, y=33)
 lbl_Start = tk.Label(window, relief="solid", textvariable=trainingStd)
+lbl_Start.config(font="Calibri, 12", fg="#66B2FF")
 lbl_Start.place(x=476, y=53, width=103, height=30)
 
 lbl_DirectionID = tk.Label(window, text="->")
@@ -121,14 +124,14 @@ lbl_DirectionID.place(x=590, y=60)
 
 lbl_EndID = tk.Label(window, text="End Date:")
 lbl_EndID.place(x=617, y=33)
-lbl_EndID = tk.Label(window, relief="solid", textvariable=trainingEnd)
-lbl_EndID.place(x=617, y=53, width=103, height=30)
+lbl_End = tk.Label(window, relief="solid", textvariable=trainingEnd)
+lbl_End.config(font="Calibri, 12", fg="#66B2FF")
+lbl_End.place(x=617, y=53, width=103, height=30)
 
 lbl_DateID = tk.Label(window, text="Date:")
 lbl_DateID.place(x=25, y=84)
 lbl_TypeID = tk.Label(window, text="Type/Check No:")
 lbl_TypeID.place(x=25, y=144)
-
 lbl_PayID = tk.Label(window, text="Pay to the Order Of:")
 lbl_PayID.place(x=154, y=144)
 lbl_DebitID = tk.Label(window, text="Debit(-):")
@@ -137,7 +140,6 @@ lbl_CreditID = tk.Label(window, text="Credit(+):")
 lbl_CreditID.place(x=564, y=144)
 lbl_BankID = tk.Label(window, text="Bank:")
 lbl_BankID.place(x=701, y=101)
-
 lbl_Operator = tk.Label(window, text="(+/-)", font="Calibri, 16")
 lbl_Operator.place(x=647, y=166)
 lbl_PreviewID = tk.Label(window, text="Preview of Current Transaction:")
