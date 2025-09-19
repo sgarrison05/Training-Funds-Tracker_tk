@@ -3,7 +3,7 @@
 # like a checkbook register. Written in tkinter
 # Creator: Shon Garrison
 # Created August 2025
-# Last Updated August 2025
+# Last Updated September 2025
 
 import tkinter as tk
 from tkinter import *
