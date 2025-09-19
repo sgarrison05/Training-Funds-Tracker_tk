@@ -51,12 +51,16 @@ def New_Training():
     lbl_TrainingEnd.place(x=27,y=171)
     
     txt_TrainingEntry = tk.Entry(trainingID_Window)
+    txt_TrainingEntry.config(font="Calibri, 12", fg="#EEF2F5")
     txt_TrainingEntry.place(x=125,y=34, width=221,height=26)
     txt_TrainingLoc = tk.Entry(trainingID_Window)
+    txt_TrainingLoc.config(font="Calibri, 12", fg="#EEF2F5")
     txt_TrainingLoc.place(x=125,y=74, width=199,height=26)
     txt_TrainingStart = tk.Entry(trainingID_Window)
+    txt_TrainingStart.config(font="Calibri, 12", fg="#EEF2F5")
     txt_TrainingStart.place(x=125,y=122, width=122,height=26)
     txt_TrainingEnd = tk.Entry(trainingID_Window)
+    txt_TrainingEnd.config(font="Calibri, 12", fg="#EEF2F5")
     txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
 
     btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get(), 
