@@ -88,7 +88,7 @@ trainingEnd = StringVar()
 txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
 
-reasons = ["Enter No.", "ATM", "Debit", "Dep", "Wthdrw", "Trxns"]
+reasons = ["Enter No.", "ATM", "Debit", "Credit", "Deposit", "Wthdrw", "Trxns"]
 cmb_Type = Combobox(window, values = reasons, width=15)
 cmb_Type.current(0)
 cmb_Type.place(x=25, y=167)
