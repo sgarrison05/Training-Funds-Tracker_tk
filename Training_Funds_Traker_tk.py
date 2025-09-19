@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import *
 from ttkbootstrap import Style
 from tkinter.ttk import Combobox
+import os
 
 window = tk.Tk()
 window.geometry("841x516")
@@ -88,6 +89,7 @@ trainingName = StringVar()
 trainingLoc = StringVar()
 trainingStd = StringVar()
 trainingEnd = StringVar()
+gbank = DoubleVar()
 
 txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
@@ -150,7 +152,8 @@ lbl_PreviewID = tk.Label(window, text="Preview of Current Transaction:")
 lbl_PreviewID.place(x=25, y=251)
 
 # Bank Process of Transaction -------------------------------------
-Bank_Label = tk.Label(window, borderwidth=2, relief="solid")
+Bank_Label = tk.Label(window, borderwidth=2, relief="solid", textvariable=gbank)
+Bank_Label.config(font="Calibri, 12", fg="#EEF2F5")
 Bank_Label.place(x=703,y=128, width=100, height=30)
 
 Trans_Label = tk.Label(window, borderwidth=2, relief="solid")
@@ -182,6 +185,39 @@ btn_Close.place(x=730, y=420, width=86, height=41)
 
 
 # Run Application ================================================
+if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/test2.txt"):
+    f = open("D:/Temp/test2.txt", "r")
+    my_list = []
+    for line in f:
+        for char in line:
+            if char[-1] == "\n" and line.__contains__("."):
+                t = float(line[-7:-1].lstrip(" "))
+                my_list.append(t)
+    gBank = my_list[-1]
+    f.close()
+
+else:
+    # if bank file doesn't exist, it creates it with a 0.0 balance then
+    # reads from it.
+    startBal = "0.00"
+    gBank = float(startBal)
+
+    # Creates running file skeleton
+    f = open("D:/Temp/test2.txt", "w")
+    f.write("Orange County Juvenile Probation Dept\n"
+            + "-" * 40 + "\n"
+            + "Personal Comptime Sheet for: Shon Garrison\n"
+            + "\n"
+            + "Date" + " " * 13 
+            + "Reason" + " " * 11 
+            + "Earned" + " " * 16 
+            + "Taken" + " " * 15 
+            + "New Balance\n"
+            + "-" * 9 + " " * 7 + "-" * 12 
+            + " " * 6 + "-" * 7 + " " * 15
+            + "-" * 6 + " " * 14 + "-" * 12 + "\n")
+    f.close()
+
 window.mainloop()
 print("\nApplication Terminated")
 print("Good-bye")
