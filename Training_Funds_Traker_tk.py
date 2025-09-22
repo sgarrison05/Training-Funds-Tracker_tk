@@ -10,6 +10,7 @@ from tkinter import *
 from ttkbootstrap import Style
 from tkinter.ttk import Combobox
 import os
+from datetime import date
 
 window = tk.Tk()
 window.geometry("841x516")
@@ -17,13 +18,84 @@ window.resizable(width=False, height=False)
 window.title("Training Funds Tracker")
 window.style = Style(theme = "darkly")
 
+today = date.today()   # get current date.  TODO: this may move later in project.
 
 # Defined Functions
-def Preview_Calculations():
-    pass
+def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cearned
+
+    # get floatvar values
+
+    # sets up variables and gets Earned or Taken Values
+    bank = gBank
+    dte = get_Date()
+
+    print()
+    print("Calculating New Daily Balance...")
+    print()
+
+    # convert string variables to decimal(float) for calculation
+    cearned = float(cearned) * 1.5
+    ctaken = float(ctaken)
+    newbal = cearned - ctaken
+    newbank = newbal + float(bank)
+    gBank = str(newbank)
+
+    # convert to back to string to display in label
+    newbal = str(newbal)
+    newbank = str(newbank)
+    print()
+    print("Setting Preview of New Balance Applied...")
+    print()
+    print()
+
+    # shows current preview of time entry prior to writing text file
+    print("Total time to enter on affidavit = " + newbal + " hrs\n"
+          + "-" * 100 + "\n"
+          + "Date" + " " * 18 
+          + "Reason" + " " * 16 
+          + "Earned" + " " * 18 
+          + "Taken" + " " * 17 + "Balance\n"
+          + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
+          + "-" * 12 + " " * 12 + "-" * 10
+          + " " * 12 + "-" * 10 + "\n" 
+          + str(dte) + " " * 12 
+          + reason + " " * 12
+          + str(cearned) + " " * 21 
+          + str(ctaken) + " " * 19
+          + newbank + "\n"
+          + "-" * 100) 
+    print()
+
+    # What gets put into run file on applying calc
+    gPreview = (str(dte) + " " * 7 
+                + reason + " " * 6 
+                + str(cearned)
+                + " " * 19 
+                + str(ctaken) + " " * 17
+                + newbank + "\n"
+                + "-" * 100 + "\n")
+    
 
 def Apply_Calculations():
-    pass
+    
+    # get floatvar values
+
+    print()
+    print("Applying New Daily Balance to Bank...")
+    print()
+
+    # incorporate to opening file
+    bank2 = float(gBank)
+    newDaybal = float(gDaily_Bank)  # get daily balance text
+    newbank2 = float(newDaybal) + bank2
+
+    gBank = (str(newbank2))  # update global variable with new balance
+    newbank2 = str(newbank2)  # convert to string to put into label and file
+
+    # writes to runfile
+    f2 = open("D:\Temp/test2.txt", "a")
+    f2.write(gPreview)
+    f2.close()
 
 def Ready_Form():
     pass
@@ -79,10 +151,7 @@ def update_labels(nam_val, loc_val, std_val, end_val):
     trainingEnd.set(end_val)
 
 
-
-
 # Main Window Framework ==========================================
-
 
 # Input Framework ================================================
 trainingName = StringVar()
@@ -90,6 +159,7 @@ trainingLoc = StringVar()
 trainingStd = StringVar()
 trainingEnd = StringVar()
 gbank = DoubleVar()
+gpreview = DoubleVar()
 
 txb_Date = tk.Entry(window)
 txb_Date.place(x=25,y=105, width=118, height=30)
