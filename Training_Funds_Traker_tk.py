@@ -158,6 +158,7 @@ trainingName = StringVar()
 trainingLoc = StringVar()
 trainingStd = StringVar()
 trainingEnd = StringVar()
+trasaction_DTE = StringVar()  # Date Variable ton convert w/datetime.strptime("String", "Format it's in"-ex: %m/%d/%Y)
 gbank = DoubleVar()
 gpreview = DoubleVar()
 
