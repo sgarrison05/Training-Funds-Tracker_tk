@@ -26,8 +26,8 @@ def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cea
     # get floatvar values
 
     # sets up variables and gets Earned or Taken Values
-    bank = gBank
-    dte = get_Date()
+    bank = gBank.get()
+    #dte = get_Date()
 
     print()
     print("Calculating New Daily Balance...")
@@ -93,7 +93,7 @@ def Apply_Calculations():
     newbank2 = str(newbank2)  # convert to string to put into label and file
 
     # writes to runfile
-    f2 = open("D:\Temp/test2.txt", "a")
+    f2 = open("D:/Temp/test2.txt", "a")
     f2.write(gPreview)
     f2.close()
 
@@ -158,7 +158,7 @@ trainingName = StringVar()
 trainingLoc = StringVar()
 trainingStd = StringVar()
 trainingEnd = StringVar()
-trasaction_DTE = StringVar()  # Date Variable ton convert w/datetime.strptime("String", "Format it's in"-ex: %m/%d/%Y)
+trasaction_DTE = StringVar()  # Date Variable ton convert w/datetime.strptime("String")
 gbank = DoubleVar()
 gpreview = DoubleVar()
 
@@ -277,16 +277,22 @@ else:
     f = open("D:/Temp/test2.txt", "w")
     f.write("Orange County Juvenile Probation Dept\n"
             + "-" * 40 + "\n"
-            + "Personal Comptime Sheet for: Shon Garrison\n"
+            + "Training Tracking Sheet for: Shon Garrison\n"
             + "\n"
             + "Date" + " " * 13 
-            + "Reason" + " " * 11 
-            + "Earned" + " " * 16 
-            + "Taken" + " " * 15 
-            + "New Balance\n"
+            + "Reason" + " " * 15 
+            + "Debit" + " " * 12 
+            + "Credit" + " " * 14 
+            + "Balance\n"
             + "-" * 9 + " " * 7 + "-" * 12 
-            + " " * 6 + "-" * 7 + " " * 15
-            + "-" * 6 + " " * 14 + "-" * 12 + "\n")
+            + " " * 10 + "-" * 6 + " " * 11
+            + "-" * 6 + " " * 14 + "-" * 12 + "\n"
+            + str(today.strftime("%m/%d/%Y")) + " " * 6
+            + "Placeholder" + " " * 11
+            + "n/a" + " " * 14
+            + "n/a" + " " * 17
+            + str(startBal) + "\n"
+            + "-" * 87)
     f.close()
 
 window.mainloop()
