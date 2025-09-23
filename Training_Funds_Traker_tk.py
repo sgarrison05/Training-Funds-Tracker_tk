@@ -53,8 +53,8 @@ def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cea
           + "-" * 100 + "\n"
           + "Date" + " " * 18 
           + "Reason" + " " * 16 
-          + "Earned" + " " * 18 
-          + "Taken" + " " * 17 + "Balance\n"
+          + "Debit" + " " * 18 
+          + "Credit" + " " * 17 + "Balance\n"
           + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
           + "-" * 12 + " " * 12 + "-" * 10
           + " " * 12 + "-" * 10 + "\n" 
