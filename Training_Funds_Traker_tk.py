@@ -18,9 +18,22 @@ window.resizable(width=False, height=False)
 window.title("Training Funds Tracker")
 window.style = Style(theme = "darkly")
 
-today = date.today()   # get current date.  TODO: this may move later in project.
+# Variables
+today = date.today().strftime(format="%m/%d/%Y")   # get current date.  TODO: this may move later in project.
+trainingName = StringVar()
+trainingLoc = StringVar()
+trainingStd = StringVar()
+trainingEnd = StringVar()
+transaction_DTE = StringVar()
+reason = StringVar()  # Date Variable ton convert w/datetime.strptime("String")
+gbank = DoubleVar()
+gpreview = DoubleVar()
+gdaily_bank = DoubleVar()
 
 # Defined Functions
+def Pull_Heading():  # TODO: Pull heading from file and enter it in form
+    pass
+
 def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cearned
 
     # get floatvar values
@@ -34,9 +47,9 @@ def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cea
     print()
 
     # convert string variables to decimal(float) for calculation
-    cearned = float(cearned) * 1.5
-    ctaken = float(ctaken)
-    newbal = cearned - ctaken
+    earned = float(earned) * 1.5
+    taken = float(taken)
+    newbal = earned - taken
     newbank = newbal + float(bank)
     gBank = str(newbank)
 
@@ -58,20 +71,20 @@ def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cea
           + "-" * 10 + " " * 12 + "-" * 10 + " " * 12 
           + "-" * 12 + " " * 12 + "-" * 10
           + " " * 12 + "-" * 10 + "\n" 
-          + str(dte) + " " * 12 
+          + str(transaction_DTE.get()) + " " * 12 
           + reason + " " * 12
-          + str(cearned) + " " * 21 
-          + str(ctaken) + " " * 19
+          + str(earned) + " " * 21 
+          + str(taken) + " " * 19
           + newbank + "\n"
           + "-" * 100) 
     print()
 
     # What gets put into run file on applying calc
-    gPreview = (str(dte) + " " * 7 
+    gPreview = (str(transaction_DTE.get()) + " " * 7 
                 + reason + " " * 6 
-                + str(cearned)
+                + str(earned)
                 + " " * 19 
-                + str(ctaken) + " " * 17
+                + str(taken) + " " * 17
                 + newbank + "\n"
                 + "-" * 100 + "\n")
     
@@ -86,7 +99,7 @@ def Apply_Calculations():
 
     # incorporate to opening file
     bank2 = float(gBank)
-    newDaybal = float(gDaily_Bank)  # get daily balance text
+    newDaybal = float(gdaily_bank)  # get daily balance text
     newbank2 = float(newDaybal) + bank2
 
     gBank = (str(newbank2))  # update global variable with new balance
@@ -94,7 +107,7 @@ def Apply_Calculations():
 
     # writes to runfile
     f2 = open("D:/Temp/test2.txt", "a")
-    f2.write(gPreview)
+    f2.write(gpreview)
     f2.close()
 
 def Ready_Form():
@@ -136,7 +149,7 @@ def New_Training():
     txt_TrainingEnd.config(font="Calibri, 12", fg="#EEF2F5")
     txt_TrainingEnd.place(x=125,y=163, width=122,height=26)
 
-    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: update_labels(txt_TrainingEntry.get(), 
+    btn_Submit= tk.Button(trainingID_Window, text="Submit", command=lambda: Update_Labels(txt_TrainingEntry.get(), 
                                                                                           txt_TrainingLoc.get(), 
                                                                                           txt_TrainingStart.get(), 
                                                                                           txt_TrainingEnd.get()))
@@ -144,36 +157,34 @@ def New_Training():
     btn_Done = tk.Button(trainingID_Window, text="Done", command=trainingID_Window.destroy)
     btn_Done.place(x=267,y=250, width=91,height=40) 
 
-def update_labels(nam_val, loc_val, std_val, end_val):
+def Update_Labels(nam_val, loc_val, std_val, end_val):
     trainingName.set(nam_val)
     trainingLoc.set(loc_val)
     trainingStd.set(std_val)
     trainingEnd.set(end_val)
 
+def Ready_Form():
+    pass
+
 
 # Main Window Framework ==========================================
 
 # Input Framework ================================================
-trainingName = StringVar()
-trainingLoc = StringVar()
-trainingStd = StringVar()
-trainingEnd = StringVar()
-trasaction_DTE = StringVar()  # Date Variable ton convert w/datetime.strptime("String")
-gbank = DoubleVar()
-gpreview = DoubleVar()
-
-txb_Date = tk.Entry(window)
+txb_Date = tk.Entry(window, text=transaction_DTE)
+txb_Date.insert(0, today)     # inserts default date of today
 txb_Date.place(x=25,y=105, width=118, height=30)
 
 reasons = ["Enter No.", "ATM", "Debit", "Credit", "Deposit", "Wthdrw", "Trxns"]
 cmb_Type = Combobox(window, values = reasons, width=15)
-cmb_Type.current(0)
+cmb_Type.current(0)           # inserts default "Enter No."
 cmb_Type.place(x=25, y=167)
 
-txb_Pay = tk.Entry(window)
+txb_Pay = tk.Entry(window)    # Payee or Reason for Transaction
 txb_Pay.place(x=157,y=167, width=300, height=30)
+
 txb_Debit = tk.Entry(window) 
 txb_Debit.place(x=479,y=167, width=74, height=30)
+
 txb_Credit = tk.Entry(window)
 txb_Credit.place(x=567,y=167, width=74, height=30)
 
@@ -265,6 +276,7 @@ if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/test2.txt"):
                 t = float(line[-7:-1].lstrip(" "))
                 my_list.append(t)
     gBank = my_list[-1]
+    # TODO: Pull Heading before close
     f.close()
 
 else:
@@ -275,20 +287,13 @@ else:
 
     # Creates running file skeleton
     f = open("D:/Temp/test2.txt", "w")
-    f.write("Orange County Juvenile Probation Dept\n"
-            + "-" * 40 + "\n"
-            + "Training Tracking Sheet for: Shon Garrison\n"
+    f.write("Training Name:\n" 
+            + "Location:\n"
+            + "Dates:\n"
             + "\n"
-            + "Date" + " " * 13 
-            + "Reason" + " " * 15 
-            + "Debit" + " " * 12 
-            + "Credit" + " " * 14 
-            + "Balance\n"
-            + "-" * 9 + " " * 7 + "-" * 12 
-            + " " * 10 + "-" * 6 + " " * 11
-            + "-" * 6 + " " * 14 + "-" * 12 + "\n"
-            + str(today.strftime("%m/%d/%Y")) + " " * 6
-            + "Placeholder" + " " * 11
+            + "-" * 87 + "\n"
+            + str(today) + " " * 6
+            + "Initial Balance" + " " * 11
             + "n/a" + " " * 14
             + "n/a" + " " * 17
             + str(startBal) + "\n"
