@@ -163,6 +163,22 @@ def Update_Labels(nam_val, loc_val, std_val, end_val):
     trainingStd.set(std_val)
     trainingEnd.set(end_val)
 
+def Create_Skeleton():        
+    # Creates running file skeleton
+    f = open("D:/Temp/Tracker_Test.txt", "w")
+    f.write("Training Name:\n" 
+            + "Location:\n"
+            + "Dates:\n"
+            + "\n"
+            + "-" * 87 + "\n"
+            + str(today) + " " * 6
+            + "Initial Balance" + " " * 11
+            + "n/a" + " " * 14
+            + "n/a" + " " * 17
+            + str(startBal) + "\n"
+            + "-" * 87)
+    f.close()
+
 def Ready_Form():
     pass
 
@@ -268,7 +284,7 @@ btn_Close.place(x=730, y=420, width=86, height=41)
 
 # Run Application ================================================
 if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/Tracker_Test.txt"):
-    f = open("D:/Temp/test2.txt", "r")
+    f = open("D:/Temp/Tracker_Test.txt", "r")
     my_list = []
     for line in f:
         for char in line:
@@ -285,20 +301,9 @@ else:
     startBal = "0.00"
     gBank = float(startBal)
 
-    # Creates running file skeleton
-    f = open("D:/Temp/Tracker_Test.txt", "w")
-    f.write("Training Name:\n" 
-            + "Location:\n"
-            + "Dates:\n"
-            + "\n"
-            + "-" * 87 + "\n"
-            + str(today) + " " * 6
-            + "Initial Balance" + " " * 11
-            + "n/a" + " " * 14
-            + "n/a" + " " * 17
-            + str(startBal) + "\n"
-            + "-" * 87)
-    f.close()
+    Create_Skeleton()
+
+
 
 window.mainloop()
 print("\nApplication Terminated")
