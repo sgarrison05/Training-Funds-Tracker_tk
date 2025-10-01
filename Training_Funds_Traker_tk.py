@@ -19,7 +19,7 @@ window.title("Training Funds Tracker")
 window.style = Style(theme = "darkly")
 
 # Variables
-today = date.today().strftime(format="%m/%d/%Y")   # get current date.  TODO: this may move later in project.
+today = date.today().strftime(format="%m/%d/%Y")   # get current date.  
 trainingName = StringVar()
 trainingLoc = StringVar()
 trainingStd = StringVar()
