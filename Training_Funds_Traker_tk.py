@@ -32,7 +32,19 @@ gdaily_bank = DoubleVar()
 
 # Defined Functions
 def Pull_Heading():  # TODO: Pull heading from file and enter it in form
-    pass
+    f = open("D:/Temp/Tracker_Test.txt", "r")
+    heading_list = []
+    for line in f:
+        for char in line:
+                 if char[-1] == "\n" and line.__contains__(":"):
+                    nam = str((line[-7:-1].lstrip(" ")))  # TODO: adjust for word may be more than -7
+                    loc = str((line[-7:-1].lstrip(" ")))  # TODO: adjust for word may be more than -7
+                    dat = str((line[-7:-1].lstrip(" ")))  # TODO: adjust for word may be more than -7                    
+                    heading_list.append(nam, loc, dat)
+
+    # TODO place in form labels
+    
+    f.close()
 
 def Preview_Calculations():  # may need to enter parameters: reason, ctaken, cearned
 
@@ -295,7 +307,9 @@ if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/Tracker_Test.txt"):
                 t = float(line[-7:-1].lstrip(" "))
                 my_list.append(t)
     gBank = my_list[-1]
-    # TODO: Pull Heading before close
+
+    Pull_Heading()
+
     f.close()
 
 else:
