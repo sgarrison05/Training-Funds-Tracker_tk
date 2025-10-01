@@ -162,6 +162,7 @@ def Update_Labels(nam_val, loc_val, std_val, end_val):
     trainingLoc.set(loc_val)
     trainingStd.set(std_val)
     trainingEnd.set(end_val)
+    #TODO: Add update to skeleton after you figure how to only do it on first run.
 
 def Create_Skeleton():        
     # Creates running file skeleton
@@ -180,7 +181,12 @@ def Create_Skeleton():
     f.close()
 
 def Ready_Form():
-    pass
+    # Clears form and returns to default values
+    txb_Date.delete(0, 'end')
+    cmb_Type.set(cmb_Type['values'][0])
+    txb_Pay.delete(0, 'end')
+    txb_Debit.delete(0, 'end')
+    txb_Credit.delete(0, 'end')
 
 
 # Main Window Framework ==========================================
@@ -270,7 +276,7 @@ Prev_Label.place(x=25,y=274, width=791, height=113 )
 # Button Framework ===============================================
 btn_Info = tk.Button(window, text="Info", command=New_Training)
 btn_Info.place(x=25,y=8, width=86,height=15)
-btn_Clear = tk.Button(window, text = "Clear", command=lambda: print("Clear Button was pressed"))
+btn_Clear = tk.Button(window, text = "Clear", command=lambda: Ready_Form())
 btn_Clear.place(x=25, y=420, width=86, height=41)
 btn_Calc = tk.Button(window, text = "Calculate", command=lambda: print("Calculate Button was pressed"))
 btn_Calc.place(x=186, y=420, width=86, height=41)
@@ -302,8 +308,6 @@ else:
     gBank = float(startBal)
 
     Create_Skeleton()
-
-
 
 window.mainloop()
 print("\nApplication Terminated")
