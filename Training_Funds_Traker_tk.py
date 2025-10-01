@@ -106,7 +106,7 @@ def Apply_Calculations():
     newbank2 = str(newbank2)  # convert to string to put into label and file
 
     # writes to runfile
-    f2 = open("D:/Temp/test2.txt", "a")
+    f2 = open("D:/Temp/Tracker_Test.txt", "a")
     f2.write(gpreview)
     f2.close()
 
@@ -182,20 +182,20 @@ cmb_Type.place(x=25, y=167)
 txb_Pay = tk.Entry(window)    # Payee or Reason for Transaction
 txb_Pay.place(x=157,y=167, width=300, height=30)
 
-txb_Debit = tk.Entry(window) 
+txb_Debit = tk.Entry(window)  # Debit Transaction
 txb_Debit.place(x=479,y=167, width=74, height=30)
 
-txb_Credit = tk.Entry(window)
+txb_Credit = tk.Entry(window) # Credit Transaction
 txb_Credit.place(x=567,y=167, width=74, height=30)
 
 # Output Framework ===============================================
 lbl_Cur_ProjID = tk.Label(window, text="Current Training:")
 lbl_Cur_ProjID.place(x=25, y=33)
-lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName)
+lbl_Cur_Proj = tk.Label(window, relief="solid", textvariable=trainingName) # Training Name
 lbl_Cur_Proj.config(font="Calibri, 12", fg="#66B2FF")  
 lbl_Cur_Proj.place(x=25, y=53, width=241, height=30)
 
-lbl_LocationID = tk.Label(window, text="Location:")
+lbl_LocationID = tk.Label(window, text="Location:") # Training Location
 lbl_LocationID.place(x=274, y=33)
 lbl_Location = tk.Label(window, relief="solid", textvariable=trainingLoc)
 lbl_Location.config(font="Calibri, 12", fg="#66B2FF")
@@ -203,7 +203,7 @@ lbl_Location.place(x=274, y=53, width=170, height=30)
 
 lbl_StartID = tk.Label(window, text="Start Date:")
 lbl_StartID.place(x=476, y=33)
-lbl_Start = tk.Label(window, relief="solid", textvariable=trainingStd)
+lbl_Start = tk.Label(window, relief="solid", textvariable=trainingStd) # Start Date
 lbl_Start.config(font="Calibri, 12", fg="#66B2FF")
 lbl_Start.place(x=476, y=53, width=103, height=30)
 
@@ -212,7 +212,7 @@ lbl_DirectionID.place(x=590, y=60)
 
 lbl_EndID = tk.Label(window, text="End Date:")
 lbl_EndID.place(x=617, y=33)
-lbl_End = tk.Label(window, relief="solid", textvariable=trainingEnd)
+lbl_End = tk.Label(window, relief="solid", textvariable=trainingEnd) # End Date
 lbl_End.config(font="Calibri, 12", fg="#66B2FF")
 lbl_End.place(x=617, y=53, width=103, height=30)
 
@@ -267,7 +267,7 @@ btn_Close.place(x=730, y=420, width=86, height=41)
 
 
 # Run Application ================================================
-if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/test2.txt"):
+if os.path.isdir("D:/Temp") and os.path.isfile("D:/Temp/Tracker_Test.txt"):
     f = open("D:/Temp/test2.txt", "r")
     my_list = []
     for line in f:
@@ -286,7 +286,7 @@ else:
     gBank = float(startBal)
 
     # Creates running file skeleton
-    f = open("D:/Temp/test2.txt", "w")
+    f = open("D:/Temp/Tracker_Test.txt", "w")
     f.write("Training Name:\n" 
             + "Location:\n"
             + "Dates:\n"
