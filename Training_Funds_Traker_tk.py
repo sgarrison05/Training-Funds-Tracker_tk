@@ -110,9 +110,6 @@ def Apply_Calculations():
     f2.write(gpreview)
     f2.close()
 
-def Ready_Form():
-    pass
-
 def Reconcile():
     pass
 
